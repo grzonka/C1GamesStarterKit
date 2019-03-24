@@ -10,6 +10,11 @@ def get_command():
     """
     try:
         ret = sys.stdin.readline()
+
+        complete_log = open("complete_log.txt", "a+")
+        complete_log.write("got input: " + str(ret))
+        complete_log.close()
+        #debug_write("got input:", str(ret))
     except EOFError:
         # Game parent process terminated so exit
         debug_write("Got EOF, parent game process must have died, exiting for cleanup")
